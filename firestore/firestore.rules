@@ -1,0 +1,57 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function hasRole(role) {
+      return isSignedIn() && request.auth.token.role == role;
+    }
+
+    match /Users/{userId} {
+      allow read, update: if isSignedIn() && request.auth.uid == userId;
+      allow create: if isSignedIn();
+      allow delete: if hasRole('admin');
+    }
+
+    match /Schools/{id} {
+      allow read: if isSignedIn();
+      allow write: if hasRole('admin');
+    }
+
+    match /Chats/{id} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /Quizzes/{id} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /Progress/{id} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /StudyPlans/{id} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /Assignments/{id} {
+      allow read, write: if hasRole('teacher') || hasRole('admin');
+    }
+
+    match /Resources/{id} {
+      allow read: if isSignedIn();
+      allow write: if hasRole('teacher') || hasRole('admin');
+    }
+
+    match /Achievements/{id} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /RagChunks/{id} {
+      allow read: if isSignedIn();
+      allow write: if hasRole('teacher') || hasRole('admin');
+    }
+  }
+}

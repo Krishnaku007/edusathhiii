@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8f9ef;
+  --foreground: #1d2a2c;
+  --surface: #ffffff;
+  --surface-2: #f3efe1;
+  --brand: #147a6a;
+  --brand-2: #ef9b22;
+  --danger: #b72f3b;
+  --muted: #5c6b70;
+  --border: #dce2d8;
+  --ring: #147a6a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-danger: var(--danger);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-figtree);
+  --font-mono: var(--font-space-mono);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-figtree), sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+.grain-bg {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(20, 122, 106, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 78% 12%, rgba(239, 155, 34, 0.09) 0%, transparent 40%),
+    linear-gradient(180deg, #fefef6 0%, #f8f9ef 60%, #f3efe1 100%);
+}
+
+.card-shadow {
+  box-shadow: 0 10px 30px rgba(18, 34, 30, 0.08);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
