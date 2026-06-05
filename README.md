@@ -44,6 +44,30 @@ EduSaathi is a production-oriented full-stack platform for Classes 1-12 that pro
 - Role-based security rules for Firestore
 - Offline sync API + IndexedDB queue architecture
 
+## Release Changelog (main)
+
+### 2026-06-05 - EduSaathi Foundation Release
+
+Commit: d3392c6
+
+Added:
+- Full Next.js 15 App Router frontend with mobile-first flows for landing, login, student, teacher, admin, planner, analytics, chat, and quiz pages.
+- Firebase integration scaffolding for Auth, Firestore, Storage, and Admin SDK.
+- Gemini-based AI APIs for tutor chat, quiz generation, auto-evaluation, study planner, homework solving, and diagram explanation.
+- RAG pipeline endpoints for indexing and retrieval using embeddings.
+- Offline-first support with service worker, installable manifest, IndexedDB pending-sync queue, and replay API.
+- Teacher analytics visualizations using Recharts.
+- Role-aware route protection for student, teacher, and admin sections.
+
+Improved:
+- Runtime safety when Firebase environment variables are missing locally.
+- Validation and linting pipeline (`npm run check`) with clean TypeScript and ESLint output.
+- Documentation coverage for architecture, API surface, schema, setup, and deployment.
+
+Security:
+- Firestore role-based security rules and index configuration.
+- Basic API rate limiting and request validation with Zod.
+
 ## Project Structure
 
 ```text
