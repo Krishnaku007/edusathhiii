@@ -34,8 +34,8 @@ const features = [
 
 export default function Home() {
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 pb-14 pt-8 sm:px-6 lg:px-8">
-      <section className="relative overflow-hidden rounded-3xl border bg-surface p-8 card-shadow sm:p-12">
+    <main className="page-container flex flex-1 flex-col pb-14 pt-8">
+      <section className="surface-panel relative overflow-hidden p-8 sm:p-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,7 +76,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: idx * 0.06 }}
             key={title}
-            className="rounded-2xl border bg-surface p-5 card-shadow"
+            className="interactive-card rounded-2xl border bg-surface p-5 card-shadow"
           >
             <div className="mb-3 inline-flex rounded-xl bg-brand/10 p-2 text-brand">
               <Icon className="h-5 w-5" />
@@ -88,15 +88,15 @@ export default function Home() {
       </section>
 
       <section className="mt-10 rounded-3xl border bg-surface-2 p-6 sm:p-8">
-        <h3 className="text-xl font-extrabold">Built for three roles</h3>
+        <h3 className="section-title">Built for three roles</h3>
         <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          <Link className="rounded-xl border bg-surface p-4 font-semibold" href="/student/dashboard">
+          <Link className="interactive-card rounded-xl border bg-surface p-4 font-semibold" href="/student/dashboard">
             Student Workspace
           </Link>
-          <Link className="rounded-xl border bg-surface p-4 font-semibold" href="/teacher/dashboard">
+          <Link className="interactive-card rounded-xl border bg-surface p-4 font-semibold" href="/teacher/dashboard">
             Teacher Analytics
           </Link>
-          <Link className="rounded-xl border bg-surface p-4 font-semibold" href="/admin/dashboard">
+          <Link className="interactive-card rounded-xl border bg-surface p-4 font-semibold" href="/admin/dashboard">
             Admin Console
           </Link>
         </div>

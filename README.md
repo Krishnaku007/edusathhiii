@@ -112,6 +112,8 @@ Security:
 `-- package.json
 ```
 
+For contributor conventions and debug-first folder mapping, see [docs/project-organization.md](docs/project-organization.md).
+
 ## Firestore Collections
 
 - Users

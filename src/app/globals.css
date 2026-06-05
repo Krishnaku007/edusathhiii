@@ -5,12 +5,22 @@
   --foreground: #1d2a2c;
   --surface: #ffffff;
   --surface-2: #f3efe1;
+  --surface-3: #efe8d4;
   --brand: #147a6a;
   --brand-2: #ef9b22;
+  --success: #20835a;
+  --warning: #b66a00;
+  --info: #1968b2;
   --danger: #b72f3b;
   --muted: #5c6b70;
   --border: #dce2d8;
+  --border-strong: #c5cec1;
   --ring: #147a6a;
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --shadow-soft: 0 10px 30px rgba(18, 34, 30, 0.08);
+  --shadow-strong: 0 18px 45px rgba(18, 34, 30, 0.14);
 }
 
 @theme inline {
@@ -18,11 +28,16 @@
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
   --color-brand: var(--brand);
   --color-brand-2: var(--brand-2);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
   --color-danger: var(--danger);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-ring: var(--ring);
   --font-sans: var(--font-figtree);
   --font-mono: var(--font-space-mono);
@@ -47,9 +62,51 @@ body {
 }
 
 .card-shadow {
-  box-shadow: 0 10px 30px rgba(18, 34, 30, 0.08);
+  box-shadow: var(--shadow-soft);
 }
 
 .text-balance {
   text-wrap: balance;
+}
+
+.page-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 88rem;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .page-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding-inline: 2rem;
+  }
+}
+
+.surface-panel {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.interactive-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-strong);
+}
+
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }

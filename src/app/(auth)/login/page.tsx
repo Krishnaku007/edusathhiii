@@ -5,6 +5,7 @@ import { useState } from "react";
 import { auth, db } from "@/lib/firebase/client";
 import { FIRESTORE_COLLECTIONS } from "@/lib/constants/app";
 import { doc, getDoc } from "firebase/firestore";
+import { routeByRole } from "@/config";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -22,20 +23,6 @@ export default function LoginPage() {
   const { signIn, signUp } = useAuth();
   const router = useRouter();
 
-  const routeByRole = (selectedRole: string) => {
-    if (selectedRole === "teacher") {
-      router.push("/teacher/dashboard");
-      return;
-    }
-
-    if (selectedRole === "admin") {
-      router.push("/admin/dashboard");
-      return;
-    }
-
-    router.push("/student/dashboard");
-  };
-
   const handleAuth = async () => {
     setError("");
     setLoading(true);
@@ -48,13 +35,13 @@ export default function LoginPage() {
           password,
           role: role as "student" | "teacher" | "admin",
         });
-        routeByRole(role);
+        router.push(routeByRole(role as "student" | "teacher" | "admin"));
       } else {
         await signIn(email, password);
         const uid = auth?.currentUser?.uid;
 
         if (!uid || !db) {
-          routeByRole("student");
+          router.push(routeByRole("student"));
           return;
         }
 
@@ -63,7 +50,7 @@ export default function LoginPage() {
           ? ((snapshot.data().role as "student" | "teacher" | "admin" | undefined) ?? "student")
           : "student";
 
-        routeByRole(actualRole);
+        router.push(routeByRole(actualRole));
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Authentication failed");
